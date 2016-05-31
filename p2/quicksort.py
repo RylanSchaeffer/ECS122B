@@ -11,7 +11,7 @@ def main(filename, k):
 
     quicksort(array, 0, len(array) - 1)
 
-    return array[k]
+    return array[int(k)]
 
 
 def quicksort(array, low, high):
