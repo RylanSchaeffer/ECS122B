@@ -1,18 +1,17 @@
-__author__ = 'rylan'
-
-# quicksort
+# quicksort and select kth element of sorted array
 # Based on http://www.algolist.net/Algorithms/Sorting/Quicksort
 
-import random
 import sys
 
-def main(filename):
+def main(filename, k):
 
     file = open(filename, 'r')
     array = [int(ele) for ele in file.readline().split()]
     file.close()
 
     quicksort(array, 0, len(array) - 1)
+
+    return array[k]
 
 
 def quicksort(array, low, high):
@@ -41,4 +40,4 @@ def quicksort(array, low, high):
 
 
 if __name__ == '__main__':
-    main(sys.argv[1])
+    main(sys.argv[1], sys.argv[2])
