@@ -28,9 +28,9 @@ for fileNum in $(seq -f "%04g" 1 100); do
   # find kth element
   kvalue=$(( $RANDOM % 1000 + 1))
 
-  quickselectOut=RylansBooty.txt
+  quickselectOut=RylanBooty.txt
   quicksortOut=RylanLovesBeyonce.txt
-  determineOut=RylanIsBeyonce.txt
+  determineOut=RylanIsDetermined.txt
 
   python ./quickselect.py $randfile $kvalue > $quickselectOut
   python ./quicksort.py $randfile $kvalue > $quicksortOut
