@@ -30,14 +30,14 @@ for fileNum in $(seq -f "%04g" 1 100); do
 
   quickselectOut=RylansBooty.txt
   quicksortOut=RylanLovesBeyonce.txt
-  determineOut=RylansIsBeyonce.txt
+  determineOut=RylanIsBeyonce.txt
 
   python ./quickselect.py $randfile $kvalue > $quickselectOut
   python ./quicksort.py $randfile $kvalue > $quicksortOut
-  # python ./deterministicselect.py $randfile $kvalue > $determineOut
+  python ./deterministicselect.py $randfile $kvalue > $determineOut
 
   # test quicksort versus quickselect results
-  if [ $(diff --brief $quicksortOut $quickselectOut) ]; then
+  if [[ $(diff --brief $quicksortOut $quickselectOut) ]]; then
     # files differ
     # cp $quicksortOut quicksort_failed_test_${fileNum}.txt
     # cp $mergesortOut mergesort_failed_test_${fileNum}.txt
@@ -46,7 +46,7 @@ for fileNum in $(seq -f "%04g" 1 100); do
     exit 1
 
   # test quicksort versus deterministicselect results
-  elif [ $(diff --brief $quicksortOut $determineOut) ]; then
+  elif [[ $(diff --brief $quicksortOut $determineOut) ]]; then
     echo "Sanity Check failed. You've gone insane."
     exit 1
   fi
