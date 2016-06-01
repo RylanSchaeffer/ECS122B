@@ -11,21 +11,21 @@ def main(filename, k):
     array = [int(ele) for ele in file.readline().split()]
     file.close()
 
-    deterministicSelect(array, 0, len(array) - 1, int(k))
-
+    print array[deterministicSelect(array, 0, len(array) - 1, int(k))]
+    
 
 def deterministicSelect(array, left, right, k):
 
-    if left == right:
-        return left
-
     while True:
+
+        if left == right:
+            return left
 
         pivotIndex = pivot(array, left, right)
 
         pivotIndex = partition(array, left, right, pivotIndex)
 
-        if pivotIndex == k:
+        if k == pivotIndex:
             return k
         elif k < pivotIndex:
             right = pivotIndex - 1
@@ -56,7 +56,8 @@ def pivot(array, left, right):
 
     # if 5 or fewer elements, return median
     if right - left < 5:
-        return statistics.median_low(array[left:(right+1)])
+        med = statistics.median_low(array[left:(right+1)])
+        return array[left:(right+1)].index(med)
 
     for i in range(left, right, 5):
 
@@ -65,11 +66,16 @@ def pivot(array, left, right):
             subRight = right
 
         median5 = int(statistics.median_low(array[i:(subRight+1)]))
+        median5Index = array[i:(subRight+1)].index(median5)
 
-        array[median5], array[left + int(math.floor((i-left)/5))] = \
-            array[left + int(math.floor((i-left)/5))], array[median5]
+        array[median5Index], array[left + int(math.floor((i-left)/5))] = \
+            array[left + int(math.floor((i-left)/5))], array[median5Index]
 
-    return deterministicSelect(array, left, left + int(math.ceil((right - left) / 5)) - 1, left + (right-left)/10)
+    newRight = left + int(math.ceil((right - left) / 5)) - 1
+
+    newK = left + int((right-left)/10)
+
+    return deterministicSelect(array, left, newRight, newK)
 
 
 if __name__ == '__main__':
