@@ -10,7 +10,9 @@ def main(filename, k):
     array = [int(ele) for ele in file.readline().split()]
     file.close()
 
-    quickSelect(array, 0, len(array) - 1, int(k))
+    print quickSelect(array, 0, len(array) - 1, int(k))
+
+
 
 
 def quickSelect(array, left, right, k):

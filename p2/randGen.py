@@ -1,9 +1,11 @@
 import sys
 import random
 
-def main( nums, range ):
-  for i in range(0,int(nums)):
-    print random.randint(1,int(range))
+
+def main(nums, domain):
+
+    for iter in range(int(nums)):
+        sys.stdout.write(str(random.randint(1, int(domain))) + ' ')
 
 
 if __name__ == '__main__':
