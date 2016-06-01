@@ -5,11 +5,11 @@ import sys
 
 def main(filename, k):
 
-    print sys.argv
+    # print sys.argv
 
     file = open(filename, 'r')
     array = [int(ele) for ele in file.readline().split()]
-    print array
+    # print array
     file.close()
 
     quicksort(array, 0, len(array) - 1)
