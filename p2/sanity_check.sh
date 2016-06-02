@@ -2,13 +2,6 @@
 
 # usage: ./sanity_check.sh
 
-# if [ $# -ne 2 ]; then
-#   # echo $# 
-#   # "$#" is command line arguments
-#   echo "usage: ./sanity_check.sh NumFilesToSort NumsToSort"
-#   exit
-# fi
-
 
 # failed=0
 
@@ -19,10 +12,6 @@ for fileNum in $(seq -f "%04g" 1 100); do
 
   # generate 1000 random numbers from 1 to 100,000
   randfile=randNums.txt
-  # for count in $(seq 1 1000); do
-  #   nums="$nums $(( $RANDOM % 1000000 + 1))"
-  # done
-  # echo -n $nums > $randfile
   python randGen.py 1000 1000000 > $randfile
 
   # find kth element
@@ -42,11 +31,13 @@ for fileNum in $(seq -f "%04g" 1 100); do
     # cp $quicksortOut quicksort_failed_test_${fileNum}.txt
     # cp $mergesortOut mergesort_failed_test_${fileNum}.txt
     # let failed++
+    echo "file number $fileNum"
     echo "Sanity Check failed. You've gone insane."
     exit 1
 
   # test quicksort versus deterministicselect results
   elif [[ $(diff --brief $quicksortOut $determineOut) ]]; then
+    echo "file number $fileNum"
     echo "Sanity Check failed. You've gone insane."
     exit 1
   fi
@@ -63,15 +54,7 @@ echo All tests passed.
 # fi
 
 rm -f $randfile $quickselectOut $quicksortOut $determineOut
-# rm -f $quicksortOut $mergesortOut $randfile $realsortOut
-# rm -f $quicksortOut $mergesortOut $randfile $realsortOut
-# make clean
 # rm -f ./*.out
 # rm -rf ./*.out.dSYM
 
 
-# ./mergesort_stats.out randNums.txt
-# ./mergesort_timed.out randNums.txt
-
-# ./quicksort_stats.out randNums.txt 10
-# ./quicksort_timed.out randNums.txt 10

@@ -11,7 +11,9 @@ def main(filename, k):
     array = [int(ele) for ele in file.readline().split()]
     file.close()
 
-    print array[deterministicSelect(array, 0, len(array) - 1, int(k))]
+    # print array[deterministicSelect(array, 0, len(array) - 1, int(k))]
+    # print array[deterministicSelect(array, 0, len(array) - 1, int(k)) + 1]
+    print deterministicSelect(array, 0, len(array) - 1, int(k)+2)
     
 
 def deterministicSelect(array, left, right, k):
