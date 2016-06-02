@@ -12,18 +12,18 @@ for fileNum in $(seq -f "%04g" 1 100); do
 
   # generate 1000 random numbers from 1 to 100,000
   randfile=randNums.txt
-  python randGen.py 1000 1000000 > $randfile
+  python randGen.py 1000 1000000
 
   # find kth element
   kvalue=$(( $RANDOM % 1000 + 1))
 
-  quickselectOut=RylanBooty.txt
-  quicksortOut=RylanLovesBeyonce.txt
-  determineOut=RylanIsDetermined.txt
+  quickselectOut=selectOut.txt
+  quicksortOut=sortOut.txt
+  determineOut=deterOut.txt
 
-  python ./quickselect.py $randfile $kvalue > $quickselectOut
-  python ./quicksort.py $randfile $kvalue > $quicksortOut
-  python ./deterministicselect.py $randfile $kvalue > $determineOut
+  python2.7 ./quickselect.py $randfile $kvalue > $quickselectOut
+  python2.7 ./quicksort.py $randfile $kvalue > $quicksortOut
+  python2.7 ./deterministicselect.py $randfile $kvalue > $determineOut
 
   # test quicksort versus quickselect results
   if [[ $(diff --brief $quicksortOut $quickselectOut) ]]; then

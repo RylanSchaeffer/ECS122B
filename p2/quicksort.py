@@ -9,7 +9,6 @@ def main(filename, k):
 
     file = open(filename, 'r')
     array = [int(ele) for ele in file.readline().split()]
-    # print array
     file.close()
 
     quicksort(array, 0, len(array) - 1)

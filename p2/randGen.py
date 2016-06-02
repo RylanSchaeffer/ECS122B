@@ -4,8 +4,12 @@ import random
 
 def main(nums, domain):
 
+    file = open('randNums.txt', 'w')
+
     for iter in range(int(nums)):
-        sys.stdout.write(str(random.randint(1, int(domain))) + ' ')
+        file.write(str(random.randint(1, int(domain))) + ' ')
+
+    file.close()
 
 
 if __name__ == '__main__':

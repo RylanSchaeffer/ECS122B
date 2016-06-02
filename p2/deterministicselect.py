@@ -2,7 +2,6 @@
 # based on pseudocode at Wikipedia: https://en.wikipedia.org/wiki/Median_of_medians
 
 import math
-import statistics
 import sys
 
 def main(filename, k):
@@ -11,9 +10,7 @@ def main(filename, k):
     array = [int(ele) for ele in file.readline().split()]
     file.close()
 
-    # print array[deterministicSelect(array, 0, len(array) - 1, int(k))]
-    # print array[deterministicSelect(array, 0, len(array) - 1, int(k)) + 1]
-    print deterministicSelect(array, 0, len(array) - 1, int(k)+2)
+    print array[deterministicSelect(array, 0, len(array) - 1, int(k))]
     
 
 def deterministicSelect(array, left, right, k):
@@ -53,13 +50,11 @@ def partition(array, left, right, pivotIndex):
 
     return storeIndex
 
-
 def pivot(array, left, right):
 
     # if 5 or fewer elements, return median
     if right - left < 5:
-        med = statistics.median_low(array[left:(right+1)])
-        return array[left:(right+1)].index(med)
+        return medianOf5(array, left, right)
 
     for i in range(left, right, 5):
 
@@ -67,18 +62,23 @@ def pivot(array, left, right):
         if subRight > right:
             subRight = right
 
-        median5 = int(statistics.median_low(array[i:(subRight+1)]))
-        median5Index = array[i:(subRight+1)].index(median5)
+        median5 = medianOf5(array, i, subRight)
 
-        array[median5Index], array[left + int(math.floor((i-left)/5))] = \
-            array[left + int(math.floor((i-left)/5))], array[median5Index]
+        array[median5], array[left + int(math.floor((i-left)/5))] = \
+            array[left + int(math.floor((i-left)/5))], array[median5]
 
     newRight = left + int(math.ceil((right - left) / 5)) - 1
 
-    newK = left + int((right-left)/10)
+    newK = left + (right-left)/10
 
     return deterministicSelect(array, left, newRight, newK)
 
+def medianOf5(array, left, right):
+
+    sortedarray = sorted(array[left:(right+1)])
+    median = sortedarray[(right-left)/2]
+    indexOfMedian = array[left:(right+1)].index(median)
+    return left + indexOfMedian
 
 if __name__ == '__main__':
     main(sys.argv[1], sys.argv[2])
