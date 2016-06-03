@@ -7,15 +7,17 @@
 
 echo "testing 100 files with 1000 numbers"
 
+fileSize=10
 # for fileNum in $(seq -f "%04g" 1 $1); do
 for fileNum in $(seq -f "%04g" 1 100); do
 
-  # generate 1000 random numbers from 1 to 100,000
+  # generate fileSize random numbers from 1 to 1,000,000
   randfile=randNums.txt
-  python randGen.py 1000 1000000
+  python randGen.py $fileSize 1000000
 
   # find kth element
-  kvalue=$(( $RANDOM % 1000 + 1))
+  kvalue=$(( $RANDOM % $fileSize ))
+  # kvalue=0
 
   quickselectOut=selectOut.txt
   quicksortOut=sortOut.txt
@@ -54,7 +56,5 @@ echo All tests passed.
 # fi
 
 rm -f $randfile $quickselectOut $quicksortOut $determineOut
-# rm -f ./*.out
-# rm -rf ./*.out.dSYM
 
 
