@@ -1,0 +1,16 @@
+sed 's/,100,/,10^2,/g' < results.csv > results2.csv
+sed -i '' 's/,100,/,10^2,/g' results2.csv
+sed -i '' 's/,1000,/,10^3,/g' results2.csv
+sed -i '' 's/,10000,/,10^4,/g' results2.csv
+sed -i '' 's/,100000,/,10^5,/g' results2.csv
+sed -i '' 's/,1000000,/,10^6,/g' results2.csv
+sed -i '' 's/,400,/,4x10^2,/g' results2.csv
+sed -i '' 's/,4000,/,4x10^3,/g' results2.csv
+sed -i '' 's/,40000,/,4x10^4,/g' results2.csv
+sed -i '' 's/,400000,/,4x10^5,/g' results2.csv
+sed -i '' 's/,4000000,/,4x10^6,/g' results2.csv
+sed -i '' 's/,700,/,7x10^2,/g' results2.csv
+sed -i '' 's/,7000,/,7x10^3,/g' results2.csv
+sed -i '' 's/,70000,/,7x10^4,/g' results2.csv
+sed -i '' 's/,700000,/,7x10^5,/g' results2.csv
+sed -i '' 's/,7000000,/,7x10^6,/g' results2.csv
