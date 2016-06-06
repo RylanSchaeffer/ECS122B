@@ -17,11 +17,11 @@
 \maketitle
 
 \section*{Introduction}
-\indent \indent Quicksort, Quickselect and Deterministicselect are three algorithms that can be used to select the $k$th smallest element of an unordered list. We compared their relative performance (measured by time to correct result) as a function of the length of the list. To do so, we analyzed the algorithms and gathered experimental data from randomly generated lists to confirm our analysis. We conclude that although the performances of the three algoriths are comparable for shorter lists, the performances begin to differ for longer lists, with quickselect emerging as the clear winner.
+\indent \indent Quicksort, quickselect and deterministicselect are three algorithms that can be used to select the $k$th smallest element of an unordered list. We compared their relative performance (measured by time to correct result) as a function of the length of the list. To do so, we analyzed the algorithms and gathered experimental data from randomly generated lists to confirm our analysis. We conclude that although the performances of the three algoriths are comparable for shorter lists, the performances begin to differ for longer lists, with quickselect emerging as the clear winner.
 
-\section*{Algorithm Analysis and Pseudocode}
+\section*{Algorithm Analysis}
 \subsection*{Quickselect}
-\indent \indent 
+\indent \indent Quickselect finds the $k$th smallest element of the list by choosing an element from the list (called the pivot) and then partitions the list into elements less than the pivot and elements greater than the pivot. Having done so, the pivot is in its final location. If we call the index of the pivot $p$, we recurse into the left side if $k < p$ or recurse into the right side if $k > p$. This divide-and-conquer strategy can perform well on average, but can also perform poorly in the worst case. Quickselects performance depends on the ``goodness" of the pivot. If a pivot is chosen so that the other elements are split evenly (or almost evenly) on either side of the pivot, the search space decreases by half and the runtime is linear i.e. $O(n)$. But if a pivot is chosen so that the other elements are placed entirely (or almost entirely) on one side of the pivot, the search space barely decreases and the runtime is quadratic i.e. $O(n^2)$.
 
 
 
@@ -30,9 +30,13 @@
 
 
 \subsection*{Quicksort}
-\indent \indent Quicksort differs from the two prior algorithms in that quicksort is a sorting algorithm; that is, quicksort rearranges the list in increasing order. To select the $kth$ smallest element, one simply selects the $k$th element from the sorted list.
+\indent \indent Quicksort differs from the two prior algorithms in that quicksort is a sorting algorithm; that is, quicksort rearranges all elements of the list in increasing order. To select the $kth$ smallest element, one simply selects the $k$th element from the sorted list.
 
-Quicksort sorts the list using the same principle that Quickselect uses: an element is selected from the list (called the pivot), and then the list is partitioned into two lists such that all elements in one list are less than the pivot and all elements in the other list are greater than the pivot. But rather than recursing into one of the two new lists as Quickselect does, Quicksort applies the same sorting procedure recursively to both lists. Thus, Quicksort performs comparatively more work than Quickselect.
+Quicksort sorts the list using the same principle that quickselect uses: an element is selected from the list (called the pivot), and then the list is partitioned into two lists such that all elements in one list are less than the pivot and all elements in the other list are greater than the pivot. But rather than recursing into either the left or the right side, quicksort applies the same sorting procedure recursively to both sides. Thus, quicksort performs comparatively more work than quickselect. Like quickselect, if the pivot is chosen so that the other elements are placed entirely (or almost entirely) on one side of the pivot, the runtime is quadratic i.e. $O(n^2)$. But if the pivot is chosen so that the other elements are split evenly (or almost evenly) on either side of the pivot, the analysis isn't as straightforward as quickselect's as quicksort isn't searching, but sorting. Thankfully, we can use recurrence relations to determine the runtime. If $T(n)$ is the time to sort a list with n elements, correctly placing the pivot takes $O(n)$, and if the pivot is well chosen to produce two equal length lists, two lists of lengths $\frac{n}{2}$ need to be sorted:
+
+$$T(n) = O(n) + 2 T(\frac{n}{2})$$
+
+Applying the master theorem tells us that $T(n) = O(n \, log \, n)$. Thus, we expect that quickselect will outperform quicksort on average as the length of the list increases.
 
 \subsection*{Pseudocode}
 See section Pseudocode on the last two pages for psuedocode of all three algorithms.

@@ -17,7 +17,7 @@ outputcsv=results.csv
   # outputcsv=${algorithm}.csv
   # echo $algorithm
   # echo '"Sample Number","algorithm","fileSize","kvalue","Time"' > $outputcsv
-  echo '"Sample Number","listLength","kvalue","quickselect","quicksort","deterministicselect"' > $outputcsv
+  echo '"Sample Number","listLength","kvalue","quickselect (s)","quicksort (s)","deterministicselect (s)"' > $outputcsv
 # done # for all algorithms
 
 

@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2015.6.28)  5 JUN 2016 21:55
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2015.6.28)  5 JUN 2016 22:44
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -490,79 +490,80 @@ LaTeX Font Info:    External font `cmex10' loaded for size
 (Font)              <5> on input line 20.
  [1
 
-{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}] <resultsWoutliers.png, id=
-20, 999.735pt x 540.0175pt>
+{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}] [2] <resultsWoutliers.png,
+ id=26, 999.735pt x 540.0175pt>
 File: resultsWoutliers.png Graphic file (type png)
 
 <use resultsWoutliers.png>
-Package pdftex.def Info: resultsWoutliers.png used on input line 69.
+Package pdftex.def Info: resultsWoutliers.png used on input line 73.
 (pdftex.def)             Requested size: 449.87659pt x 243.00562pt.
- <results.png, id=22, 999.735pt x 540.0175pt>
+ <results.png, id=28, 999.735pt x 540.0175pt>
 File: results.png Graphic file (type png)
 
 <use results.png>
-Package pdftex.def Info: results.png used on input line 73.
+Package pdftex.def Info: results.png used on input line 77.
 (pdftex.def)             Requested size: 449.87659pt x 243.00562pt.
- [2 <./resultsWoutliers.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 78--79
+ [3 <./resultsWoutliers.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 82--83
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 80--81
+Underfull \hbox (badness 10000) in paragraph at lines 84--85
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 87--88
+Underfull \hbox (badness 10000) in paragraph at lines 91--92
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 89--90
+Underfull \hbox (badness 10000) in paragraph at lines 93--94
 
  []
 
-[3 <./results.png>]
-LaTeX Font Info:    Try loading font information for OML+cmr on input line 101.
+[4 <./results.png>]
+LaTeX Font Info:    Try loading font information for OML+cmr on input line 105.
 
  (/usr/share/texlive/texmf-dist/tex/latex/base/omlcmr.fd
 File: omlcmr.fd 1999/05/25 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OML/cmr/m/n' in size <10> not available
-(Font)              Font shape `OML/cmm/m/it' tried instead on input line 101.
+(Font)              Font shape `OML/cmm/m/it' tried instead on input line 105.
 
-[4]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 203.
- [5]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 203.
+[5]
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 207.
+ [6]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 207.
  (./report.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 203.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 203.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 207.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 207.
 Package rerunfilecheck Info: File `report.out' has not changed.
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 203.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 207.
  ) 
 Here is how much of TeX's memory you used:
- 6978 strings out of 494368
- 99747 string characters out of 6163629
+ 6979 strings out of 494368
+ 99753 string characters out of 6163629
  203607 words of memory out of 5000000
  10077 multiletter control sequences out of 15000+600000
  7755 words of font info for 28 fonts, out of 8000000 for 9000
  398 hyphenation exceptions out of 8191
- 29i,6n,32p,626b,1729s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 29i,6n,32p,1196b,1729s stack positions out of 5000i,500n,10000p,200000b,80000s
 </usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></us
 r/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/shar
-e/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texli
-ve/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/share/texlive/texm
-f-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/share/texlive/texmf-dist/
-fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/share/texlive/texmf-dist/fonts/ty
-pe1/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/pu
-blic/amsfonts/cm/cmtt10.pfb>
-Output written on report.pdf (5 pages, 143211 bytes).
+e/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/share/texli
+ve/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texm
+f-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/share/texlive/texmf-dist/
+fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/share/texlive/texmf-dist/fonts/t
+ype1/public/amsfonts/cm/cmr7.pfb></usr/share/texlive/texmf-dist/fonts/type1/pub
+lic/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/am
+sfonts/cm/cmtt10.pfb>
+Output written on report.pdf (6 pages, 154159 bytes).
 PDF statistics:
- 200 PDF objects out of 1000 (max. 8388607)
- 179 compressed objects within 2 object streams
- 112 named destinations out of 1000 (max. 500000)
+ 208 PDF objects out of 1000 (max. 8388607)
+ 185 compressed objects within 2 object streams
+ 113 named destinations out of 1000 (max. 500000)
  11 words of extra memory for PDF output out of 10000 (max. 10000000)
 
