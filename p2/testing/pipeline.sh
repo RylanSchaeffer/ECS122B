@@ -21,7 +21,7 @@ outputcsv=results.csv
 # done # for all algorithms
 
 
-for fileSize in {100,1000,10000,100000,1000000}; do
+for fileSize in {100,400,700,1000,4000,7000,10000,40000,70000,100000,400000,700000,1000000}; do
   echo "filesize $fileSize"
   for fileNum in $(seq -f "%03g" 1 200); do
 
