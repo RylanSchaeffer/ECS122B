@@ -21,18 +21,19 @@
 
 \section*{Algorithm Analysis}
 \subsection*{Quickselect}
-\indent \indent Quickselect finds the $k$th smallest element of the list by choosing an element from the list (called the pivot) and then partitions the list into elements less than the pivot and elements greater than the pivot. Having done so, the pivot is in its final location. If we call the index of the pivot $p$, we recurse into the left side if $k < p$ or recurse into the right side if $k > p$. This divide-and-conquer strategy can perform well on average, but can also perform poorly in the worst case. Quickselects performance depends on the ``goodness" of the pivot. If a pivot is chosen so that the other elements are split evenly (or almost evenly) on either side of the pivot, the search space decreases by half and the runtime is linear i.e. $O(n)$. But if a pivot is chosen so that the other elements are placed entirely (or almost entirely) on one side of the pivot, the search space barely decreases and the runtime is quadratic i.e. $O(n^2)$.
+\indent \indent Quickselect finds the $k$th smallest element of the list by choosing an element from the list (called the pivot) and then partitions the list into elements less than the pivot and elements greater than the pivot. Having done so, the pivot is in its final location between the two partitions. If we call the index of the pivot $p$, we recurse into the left side if $k < p$ or recurse into the right side if $k > p$. This divide-and-conquer strategy can perform well on average, but can also perform poorly in the worst case. Quickselects performance depends on the ``goodness" of the pivot. If a pivot is chosen so that the other elements are split evenly (or almost evenly) on either side of the pivot, the search space decreases by half and the runtime is linear i.e. $O(n)$. But if a pivot is chosen so that the other elements are placed entirely (or almost entirely) on one side of the pivot, the search space barely decreases and the runtime is quadratic i.e. $O(n^2)$.
 
 
 
 \subsection*{Deterministicselect}
-\indent \indent 
+\indent \indent Deterministicselect is a modified version of quickselect that cleverly chooses the pivot to be the median (or near the median, more precisely) of the list; by doing so, the list partitions are guaranteed to be approximately the same length and thus the worst-case runtime is $O(n)$. To select a pivot value near the median, deterministicselect splits the list into small groups (in our implementation, groups of 5 or fewer), computes the median of each group, and then repeats recursively until only one value remains. At this point, a pivot has been selected and deterministicselect proceeds in a manner identical to quickselect. To understand why the worst-case runtime is $O(n)$, let $T(n)$ be the time to select the kth smallest number. Since the list is divided into $\frac{n}{5}$ groups and the pivot is selected as the median of the groups' medians, $T(\frac{n}{5})$ time is required to determine the median. Then, to partition the list elements on either side of the pivot requires $O(n)$ time. Finally, in the worst case, the pivot was selected so that 70\% of the list's elements fall on the side of the pivot that will be recursed into, requiring $T(\frac{7n}{10})$ time. Thus, $$T(n) \leq T(\frac{n}{5}) + n + T(\frac{7n}{10})$$
 
+Applying the Master Theorem tells us that the runtime will be worst-case $O(n)$.
 
 \subsection*{Quicksort}
 \indent \indent Quicksort differs from the two prior algorithms in that quicksort is a sorting algorithm; that is, quicksort rearranges all elements of the list in increasing order. To select the $kth$ smallest element, one simply selects the $k$th element from the sorted list.
 
-Quicksort sorts the list using the same principle that quickselect uses: an element is selected from the list (called the pivot), and then the list is partitioned into two lists such that all elements in one list are less than the pivot and all elements in the other list are greater than the pivot. But rather than recursing into either the left or the right side, quicksort applies the same sorting procedure recursively to both sides. Thus, quicksort performs comparatively more work than quickselect. Like quickselect, if the pivot is chosen so that the other elements are placed entirely (or almost entirely) on one side of the pivot, the runtime is quadratic i.e. $O(n^2)$. But if the pivot is chosen so that the other elements are split evenly (or almost evenly) on either side of the pivot, the analysis isn't as straightforward as quickselect's as quicksort isn't searching, but sorting. Thankfully, we can use recurrence relations to determine the runtime. If $T(n)$ is the time to sort a list with n elements, correctly placing the pivot takes $O(n)$, and if the pivot is well chosen to produce two equal length lists, two lists of lengths $\frac{n}{2}$ need to be sorted:
+Quicksort sorts the list using the same principle that quickselect uses: an element is selected from the list (called the pivot), and then the list is partitioned into two lists such that all elements in one list are less than the pivot and all elements in the other list are greater than the pivot. But rather than recursing into either the left or the right side, quicksort applies the same sorting procedure recursively to both sides. Thus, quicksort performs comparatively more work than quickselect. Like quickselect, if the pivot is chosen so that the other elements are placed entirely (or almost entirely) on one side of the pivot, the runtime is quadratic i.e. $O(n^2)$. But if the pivot is chosen so that the other elements are split evenly (or almost evenly) on either side of the pivot, the analysis isn't as straightforward as quickselect's as quicksort isn't searching, but sorting. Thankfully, we can use recurrence relations again to determine the runtime. If $T(n)$ is the time to sort a list with n elements, correctly placing the pivot takes $O(n)$, and if the pivot is well chosen to produce two equal length lists, two lists of lengths $\frac{n}{2}$ need to be sorted:
 
 $$T(n) = O(n) + 2 T(\frac{n}{2})$$
 
@@ -40,8 +41,6 @@ Applying the master theorem tells us that $T(n) = O(n \, log \, n)$. Thus, we ex
 
 \subsection*{Pseudocode}
 See section Pseudocode on the last two pages for psuedocode of all three algorithms.
-
-\pagebreak
 
 \section*{Empirical Study}
 \indent \indent To investigate the relative performance of the three algorithms, we generated 1000 lists: 200 containing $10^2$ integers between one and one million, 200 containing $10^3$ integers between one and one million, 200 containing $10^4$ integers between one and one million, 200 containing $10^5$ integers between one and one million, and 200 containing $10^6$ integers between one and one million.
@@ -78,14 +77,25 @@ Three outliers, two from deterministicselect and one from quicksort, clearly ske
 
 To compare performance by list length, we plotted the performance of all three algorithms in a histogram for each of the five list lengths ($10^2, 10^3, 10^4, 10^5, 10^6$, respectively).
 
+\includegraphics[scale=0.62]{list10^2}
+
+\includegraphics[scale=0.62]{list10^3}
+
+\includegraphics[scale=0.62]{list10^4}
+
+\includegraphics[scale=0.62]{list10^5}
+
+\includegraphics[scale=0.62]{list10^6}
+
+As one can visually see, for short list lengths, the three algorithms perform the same. Quickselect begins to emerge as the leader as the list length reaches $10^4$ elements, with quicksort and deterministicselect still performing roughly the same. Once the list length reaches  $10^5$ elements, deterministicselect begins to pull ahead of quicksort, leaving clear performance differences between the three for lists of $10^6$ elements.
+
+The puzzling question is why quickselect outperforms deterministicselect when deterministicselect has a guaranteed worst-case $O(n)$ runtime and quickselect only has a $O(n)$ runtime on average, with a worst-case runtime of $O(n^2)$. We believe the answer lies in the fact that the list elements are randomly generated. As a result, the selected pivot has a good chance of being near the median of the list. Since quickselect doesn't incur the costs of repeatedly determining the median in order to partition the list, quickselect outperforms deterministicselect.
+
 \section*{Future Directions}
-multiple selects for same list - quicksort faster?\\
-
-at which point one algorithm surpasses the other?\\
-
-exactly what is the ratio of performance between algorithms?
+\indent \indent Given more time, there are three questions of interest we would have liked to pursue. First, at what list lengths do the performance of the three algorithms become statistically different? Second, quicksort has the advantage of sorting the entire list, making subsequent selections on the same list in constant time; supposing we wanted to make multiple selects on the same list, which algorithm would be best for which list lengths? Third, would the algorithms still have the same comparative performance over data that wasn't selected uniformly at random? We suspect that deterministicselect would overtake quickselect for non-random lists and could explore that through more sophisticated list generation techniques.
 
 \section*{Conclusion}
+\indent \indent Our goal was to compare the performance of three algorithms designed to select the $k$th smallest element of a list: quicksort, quickselect and deterministicselect. Quickselect was the fastest of the three, emerging as the clear winner for lists of length $10^4$ elements or more. Deterministicselect was roughly on par with quicksort up until lists of length $10^5$ or longer. These results did not agree with the theoretical analysis of the algorithms. We argued why the theoretical analysis produced a different conclusion than the empirical performance and suggested future directions of exploration.
 
 \section*{Citations}
 Quicksort. Wikipedia. Accessed June 6th, 2016. \url{https://en.wikipedia.org/wiki/Quicksort}\\
